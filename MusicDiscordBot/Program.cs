@@ -7,15 +7,38 @@ using Microsoft.Extensions.Logging;
 using DSharpPlus.CommandsNext;
 using System.Reflection;
 using MusicDiscordBot.Commands;
+using Microsoft.Extensions.Configuration;
 
 namespace MusicDiscordBot
 {
     class Program
     {
+
+        public static IConfigurationRoot Configuration { get; set; }
+
         public static DiscordClient Discord;
 
         static void Main(string[] args)
         {
+            var devEnvironmentVariable = Environment.GetEnvironmentVariable("NETCORE_ENVIRONMENT");
+
+            var isDevelopment = string.IsNullOrEmpty(devEnvironmentVariable) ||
+                                devEnvironmentVariable.ToLower() == "development";
+            //Determines the working environment as IHostingEnvironment is unavailable in a console app
+
+            var builder = new ConfigurationBuilder();
+            // tell the builder to look for the appsettings.json file
+            builder
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            //only add secrets in development
+            if (isDevelopment)
+            {
+                builder.AddUserSecrets<Program>();
+            }
+
+            Configuration = builder.Build();
+
             MainAsync().GetAwaiter().GetResult();
         }
 
@@ -23,7 +46,7 @@ namespace MusicDiscordBot
         {
             Discord = new DiscordClient(new DiscordConfiguration()
             {
-                Token = "NzAwNzgyNDUxMjc4MDg2MTkw.Xpn8hA.COYYHb9jXcV6NMa8vXOvqO0PAxY",
+                Token = Configuration["TOKEN"],
                 TokenType = TokenType.Bot,
                 MinimumLogLevel = LogLevel.Debug
             });
