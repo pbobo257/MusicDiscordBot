@@ -39,6 +39,11 @@ namespace MusicDiscordBot
 
             Configuration = builder.Build();
 
+            if (isDevelopment)
+            {
+                Environment.SetEnvironmentVariable("TOKEN", Configuration["TOKEN"]);
+            }
+
             MainAsync().GetAwaiter().GetResult();
         }
 
@@ -46,7 +51,7 @@ namespace MusicDiscordBot
         {
             Discord = new DiscordClient(new DiscordConfiguration()
             {
-                Token = Configuration["TOKEN"],
+                Token = Environment.GetEnvironmentVariable("TOKEN"),
                 TokenType = TokenType.Bot,
                 MinimumLogLevel = LogLevel.Debug
             });
