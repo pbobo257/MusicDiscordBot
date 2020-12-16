@@ -68,7 +68,7 @@ namespace MusicDiscordBot
             var endpoint = new ConnectionEndpoint
             {
                 Hostname = "127.0.0.1", // From your server configuration.
-                Port = 5000  // From your server configuration
+                Port = Environment.GetEnvironmentVariable("PORT") ==null? 5000: Convert.ToInt32(Environment.GetEnvironmentVariable("PORT"))  // From your server configuration
             };
 
             var lavalinkConfig = new LavalinkConfiguration
