@@ -53,7 +53,8 @@ namespace MusicDiscordBot
             {
                 Token = Environment.GetEnvironmentVariable("TOKEN"),
                 TokenType = TokenType.Bot,
-                MinimumLogLevel = LogLevel.Debug
+                MinimumLogLevel = LogLevel.Debug,
+                AutoReconnect=true
             });
 
             var commands = Discord.UseCommandsNext(new CommandsNextConfiguration()
@@ -86,7 +87,7 @@ namespace MusicDiscordBot
             var lavalink = Discord.UseLavalink();
 
 
-            await Discord.ConnectAsync();
+            await Discord.ConnectAsync(new DSharpPlus.Entities.DiscordActivity("Anime",DSharpPlus.Entities.ActivityType.Watching));
             await lavalink.ConnectAsync(lavalinkConfig);
             await Task.Delay(-1);
         }

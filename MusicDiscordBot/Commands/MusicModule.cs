@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Lavalink.EventArgs;
 using System;
@@ -105,6 +106,8 @@ namespace MusicDiscordBot.Commands
                 return;
             }
 
+            await ctx.Message.CreateReactionAsync(DiscordEmoji.FromName(ctx.Client, ":ok_hand:"));
+
             await conn.SeekAsync(currentTrack.Length);
         }
 
@@ -135,6 +138,7 @@ namespace MusicDiscordBot.Commands
                 Queue.Enqueue(loadResult.Tracks.First());
             }
 
+            await ctx.Message.CreateReactionAsync(DiscordEmoji.FromName(ctx.Client, ":ok_hand:"));
             SoundContext = ctx;
             await PlayNext(conn, null);
         }
@@ -157,6 +161,7 @@ namespace MusicDiscordBot.Commands
 
             Queue.Enqueue(loadResult.Tracks.First());
 
+            await ctx.Message.CreateReactionAsync(DiscordEmoji.FromName(ctx.Client, ":ok_hand:"));
             SoundContext = ctx;
             await PlayNext(conn, null);
         }
@@ -218,7 +223,7 @@ namespace MusicDiscordBot.Commands
                 .WithTitle("Playing now:")
                 .WithDescription($"[{track.Title}]({track.Uri.AbsoluteUri})");
 
-            await SoundContext.RespondAsync(null, false, builder.Build());
+            var message = await SoundContext.RespondAsync(null, false, builder.Build());
         }
 
         [Command]
@@ -245,6 +250,8 @@ namespace MusicDiscordBot.Commands
                 await ctx.RespondAsync("There are no tracks loaded.");
                 return;
             }
+
+            await ctx.Message.CreateReactionAsync(DiscordEmoji.FromName(ctx.Client, ":ok_hand:"));
 
             await conn.PauseAsync();
         }
@@ -273,6 +280,8 @@ namespace MusicDiscordBot.Commands
                 await ctx.RespondAsync("There are no tracks loaded.");
                 return;
             }
+
+            await ctx.Message.CreateReactionAsync(DiscordEmoji.FromName(ctx.Client, ":ok_hand:"));
 
             await conn.ResumeAsync();
         }
