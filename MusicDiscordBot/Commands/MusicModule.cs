@@ -112,7 +112,10 @@ namespace MusicDiscordBot.Commands
         public async Task Play(CommandContext ctx, Uri url)
         {
             var (node, conn) = await ConnectToChannel(ctx);
-
+            if(node is null || conn is null)
+            {
+                return;
+            }
             var loadResult = await node.Rest.GetTracksAsync(url);
 
             if (loadResult.LoadResultType == LavalinkLoadResultType.LoadFailed
@@ -139,7 +142,10 @@ namespace MusicDiscordBot.Commands
         public async Task Play(CommandContext ctx, [RemainingText] string search)
         {
             var (node, conn) = await ConnectToChannel(ctx);
-
+            if (node is null || conn is null)
+            {
+                return;
+            }
             var loadResult = await node.Rest.GetTracksAsync(search);
 
             if (loadResult.LoadResultType == LavalinkLoadResultType.LoadFailed

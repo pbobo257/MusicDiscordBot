@@ -67,8 +67,10 @@ namespace MusicDiscordBot
 
             var endpoint = new ConnectionEndpoint
             {
-                Hostname = "mymusicbot-lavalink.herokuapp.com", // From your server configuration.
-                Port = Convert.ToInt32(Environment.GetEnvironmentVariable("PORT") ?? "80")  // From your server configuration
+                Hostname = "newmydiscordbot-lavalink.herokuapp.com", // From your server configuration.
+                //Port = Convert.ToInt32(Environment.GetEnvironmentVariable("PORT") ?? "80")  // From your server configuration
+                //Hostname = "127.0.0.1",
+                Port = 80
             };
 
             Console.WriteLine(endpoint.Port);
@@ -76,6 +78,7 @@ namespace MusicDiscordBot
             var lavalinkConfig = new LavalinkConfiguration
             {
                 Password = "lavalinkpass", // From your server configuration.
+                //Password= "youshallnotpass",
                 RestEndpoint = endpoint,
                 SocketEndpoint = endpoint
             };
