@@ -14,11 +14,25 @@ namespace MusicDiscordBot.Commands
         public async Task Bobametr(CommandContext ctx)
         {
             var rng = new Random();
-            
+
+            var boba = rng.Next(0, 40);
 
             var builder = new DiscordEmbedBuilder()
                 .WithTitle("Твій боба має:")
-                .WithDescription($"{rng.Next(0, 40)}см");
+                .WithDescription($"{boba}см");
+
+            if (boba > 20)
+            {
+                builder.WithImageUrl("https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif");
+            }
+            else if (boba < 10)
+            {
+                builder.WithImageUrl("https://media.giphy.com/media/7J4Lvpz55rocVYccdH/giphy.gif");
+            }
+            else
+            {
+                builder.WithImageUrl("https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif");
+            }
 
             await ctx.RespondAsync("",false,builder.Build());
         }
