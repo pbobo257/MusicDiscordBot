@@ -97,7 +97,7 @@ namespace MusicDiscordBot
 
         public static async Task ConnectToLavalinkAsync(LavalinkExtension lavalink, LavalinkConfiguration config)
         {
-            await Task.Delay(TimeSpan.FromSeconds(30)).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromSeconds(55)).ConfigureAwait(false);
 
             await lavalink.ConnectAsync(config);
 
