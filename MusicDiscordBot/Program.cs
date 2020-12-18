@@ -54,7 +54,8 @@ namespace MusicDiscordBot
                 Token = Environment.GetEnvironmentVariable("TOKEN"),
                 TokenType = TokenType.Bot,
                 MinimumLogLevel = LogLevel.Debug,
-                AutoReconnect=true
+                AutoReconnect=true,
+                
             });
 
             var commands = Discord.UseCommandsNext(new CommandsNextConfiguration()
@@ -81,7 +82,8 @@ namespace MusicDiscordBot
                 Password = "lavalinkpass", // From your server configuration.
                 //Password= "youshallnotpass",
                 RestEndpoint = endpoint,
-                SocketEndpoint = endpoint
+                SocketEndpoint = endpoint,
+                ResumeTimeout = 30
             };
 
             var lavalink = Discord.UseLavalink();
