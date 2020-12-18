@@ -42,7 +42,8 @@ namespace MusicDiscordBot.Commands
             await ctx.RespondAsync(null, false, builder.Build());
         }
 
-        [Command]
+        [Command("die")]
+        [Aliases("leave")]
         public async Task Leave(CommandContext ctx)
         {
             var lava = ctx.Client.GetLavalink();
