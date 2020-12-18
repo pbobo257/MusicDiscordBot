@@ -66,6 +66,7 @@ namespace MusicDiscordBot
             commands.RegisterCommands<MyFirstModule>();
             commands.RegisterCommands<MusicModule>();
             commands.RegisterCommands<BobaModule>();
+            commands.RegisterCommands<EggModule>();
 
             var endpoint = new ConnectionEndpoint
             {
