@@ -15,7 +15,7 @@ namespace MusicDiscordBot.Commands
         {
             var rng = new Random();
 
-            var boba = rng.Next(0, 40);
+            var boba = rng.Next(0, 41);
 
             var builder = new DiscordEmbedBuilder()
                 .WithTitle("Твій боба має:")
