@@ -15,7 +15,7 @@ namespace MusicDiscordBot.Commands
         {
             var rng = new Random();
 
-            var eggs = rng.Next(1, 3);
+            var eggs = rng.Next(1, 4);
 
             var builder = new DiscordEmbedBuilder();
 
