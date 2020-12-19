@@ -72,8 +72,9 @@ namespace MusicDiscordBot.Commands
             var lava = ctx.Client.GetLavalink();
             if (!lava.ConnectedNodes.Any())
             {
-                await ctx.RespondAsync("The Lavalink connection is not established");
-                return;
+                //await ctx.RespondAsync("The Lavalink connection is not established");
+                //return;
+                await lava.ConnectAsync(_lavalinkConfig);
             }
 
             var node = lava.ConnectedNodes.Values.First();
