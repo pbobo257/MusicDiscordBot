@@ -79,6 +79,8 @@ namespace MusicDiscordBot.Commands
 
             var node = lava.ConnectedNodes.Values.First();
 
+            await node.ConnectAsync(ctx.Member.VoiceState.Channel);
+
             if (ctx.Member.VoiceState.Channel.Type != ChannelType.Voice)
             {
                 await ctx.RespondAsync("Not a valid voice channel.");
