@@ -85,7 +85,7 @@ namespace MusicDiscordBot
                 //Password= "youshallnotpass",
                 RestEndpoint = endpoint,
                 SocketEndpoint = endpoint,
-                ResumeTimeout = 30
+                ResumeTimeout = 50
             };
 
             var lavalink = Discord.UseLavalink();

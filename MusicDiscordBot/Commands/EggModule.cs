@@ -10,10 +10,11 @@ namespace MusicDiscordBot.Commands
 {
     public class EggModule : BaseCommandModule
     {
+        private readonly Random rng = new Random();
+
         [Command("хто_я?")]
         public async Task EggCounter(CommandContext ctx)
         {
-            var rng = new Random();
 
             var eggs = rng.Next(1, 4);
 
