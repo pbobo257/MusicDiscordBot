@@ -85,24 +85,14 @@ namespace MusicDiscordBot
                 //Password= "youshallnotpass",
                 RestEndpoint = endpoint,
                 SocketEndpoint = endpoint,
-                ResumeTimeout = 30
+                ResumeTimeout = 50
             };
 
             var lavalink = Discord.UseLavalink();
 
             await Discord.ConnectAsync(new DSharpPlus.Entities.DiscordActivity("Anime",DSharpPlus.Entities.ActivityType.Watching));
             await lavalink.ConnectAsync(lavalinkConfig);
-            await ConnectToLavalinkAsync(lavalink, lavalinkConfig);
             await Task.Delay(-1);
-        }
-
-        public static async Task ConnectToLavalinkAsync(LavalinkExtension lavalink, LavalinkConfiguration config)
-        {
-            await Task.Delay(TimeSpan.FromSeconds(55)).ConfigureAwait(false);
-
-            await lavalink.ConnectAsync(config);
-
-            await ConnectToLavalinkAsync(lavalink, config);
         }
     }
 }

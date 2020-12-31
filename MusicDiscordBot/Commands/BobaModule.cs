@@ -10,11 +10,12 @@ namespace MusicDiscordBot.Commands
 {
     public class BobaModule : BaseCommandModule
     {
+        private readonly Random rng = new Random();
+
         [Command("бобаметр")]
         [Aliases("пушкаметр")]
         public async Task Bobametr(CommandContext ctx)
         {
-            var rng = new Random();
 
             var boba = rng.Next(0, 41);
 
