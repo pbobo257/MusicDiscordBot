@@ -11,6 +11,7 @@ namespace MusicDiscordBot.Commands
     public class BobaModule : BaseCommandModule
     {
         [Command("бобаметр")]
+        [Aliases("пушкаметр")]
         public async Task Bobametr(CommandContext ctx)
         {
             var rng = new Random();

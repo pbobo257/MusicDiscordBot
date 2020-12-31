@@ -11,6 +11,7 @@ namespace MusicDiscordBot.Commands
     public class EggModule : BaseCommandModule
     {
         [Command("хто_я?")]
+        [Aliases("хтоя", "хтоя?")]
         public async Task EggCounter(CommandContext ctx)
         {
             var rng = new Random();
